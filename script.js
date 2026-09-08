@@ -1,6 +1,6 @@
 
 const vendas = document.getElementById("vendas");
-const fabricaçao = document.getElementById("fabricacao");
+const fabricacao = document.getElementById("fabricacao");
 const conteudo = document.getElementById("conteudo");
 
 vendas.addEventListener("click",function() {
@@ -12,7 +12,7 @@ conteudo.innerHTML=
 <span class="nome-produto">Arroz</span>
 
 <div class="controle">
-    <button type="button" class="menos">−</button>
+    <button type="button" class="menos">-</button>
 
     <span class="quantidade">0</span>
 
@@ -39,6 +39,21 @@ mais.addEventListener("click", function() {
     valor++;
     quantidade.textContent = valor;
 });
+produtosVendas.forEach(function(nome) {
+    conteudo.insertAdjacentHTML("beforeend",
+        `
+        <div class="produto">
+            <span class="nome-produto">${nome}</span>
+
+            <div class="controle">
+                <button type="button" class="menos">−</button>
+                <span class="quantidade">0</span>
+                <button type="button" class="mais">+</button>
+            </div>
+        </div>
+        `
+    );
+});
 
 menos.addEventListener("click", function() {
     if (valor > 0) {
@@ -49,8 +64,9 @@ menos.addEventListener("click", function() {
 });
 
 
-fabricaçao.addEventListener("click", function() {
+fabricacao.addEventListener("click", function() {
 conteudo.innerHTML = `
+    
     <h2>Produtos para Fabricação</h2>
 
     <div class="produto">
@@ -64,29 +80,33 @@ conteudo.innerHTML = `
     <div class="produto">
         <span>Fermento</span>
     </div> `;
+
+produtosFabricacao.forEach(function(nome) {
+
+        conteudo.insertAdjacentHTML("beforeend",
+            `
+            <div class="produto">
+                <span class="nome-produto">${nome}</span>
+
+                <div class="controle">
+                    <button type="button" class="menos">-</button>
+
+                    <span class="quantidade">0</span>
+
+                    <button type="button" class="mais">+</button>
+                </div>
+            </div>
+            `
+        );
+
+    });
 });
+
 
     
 
 
-fabricacao.addEventListener("click", function() {
-conteudo.innerHTML =
-`
-    <h2>Produtos para Fabricação</h2>
 
-    <div class="produto">
-        <span>Farinha</span>
-    </div>
-
-    <div class="produto">
-        <span>Açúcar</span>
-    </div>
-
-    <div class="produto">
-        <span>Fermento</span>
-    </div>
-`;
-;});
 const nomeProduto = document.getElementById("nomeProduto");
 const categoriaProduto = document.getElementById("categoriaProduto");
 const adicionarProduto = document.getElementById("adicionarProduto");
