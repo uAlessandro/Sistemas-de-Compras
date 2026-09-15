@@ -223,12 +223,20 @@ fabricacao.addEventListener("click", function() {
         if (produtosVendas.includes(nome)) {
         alert("Esse produto já está cadastrado.");
         return;
+        
+    }
+    if (produtosFabricacao.includes(nome)) {
+    alert("Esse produto já está cadastrado em Fabricação.");
+    return;
     }
         if (produtosFixosVendas.includes(nome)) {
         alert("Esse produto já existe.");
         return;
     }
-    
+     if (produtosFixosFabricacao.includes(nome)) {
+            alert("Esse produto já existe em Fabricação.");
+            return;
+        }
         
     produtosVendas.push(nome);
     
@@ -237,6 +245,20 @@ fabricacao.addEventListener("click", function() {
         if (produtosFixosFabricacao.includes(nome)) {
             alert("Esse produto já está cadastrado.");
             return;
+        }
+       
+         if (produtosFixosFabricacao.includes(nome)) {
+        alert("Esse produto já existe.");
+        return;
+    }
+        if (produtosFixosVendas.includes(nome)) {
+        alert("Esse produto já existe em Vendas.");
+        return;
+        }
+        
+        if (produtosFixosVendas.includes(nome)) {
+        alert("Esse produto já existe em Vendas.");
+        return;
         }
 
     produtosFabricacao.push(nome);
