@@ -2,6 +2,7 @@
 const vendas = document.getElementById("vendas");
 const fabricacao = document.getElementById("fabricacao");
 const conteudo = document.getElementById("conteudo");
+const quantidades = {};
 
 vendas.addEventListener("click",function() {
 conteudo.innerHTML=
@@ -22,7 +23,7 @@ conteudo.innerHTML=
 </div>
 
     <div class="produto">
-        <span>Refrigerante</span>
+        <span class="nome-produto">Refrigerante</span>
         <div class="controle">
             <button type="button" class="menos">-</button>
 
@@ -33,7 +34,7 @@ conteudo.innerHTML=
     </div>
 
     <div class="produto">
-        <span>Biscoito</span>
+        <span class="nome-produto">Biscoito</span>
         <div class="controle">
             <button type="button" class="menos">-</button>
 
@@ -43,47 +44,51 @@ conteudo.innerHTML=
     </div>
     </div>
 `;
-const produtos = conteudo.querySelectorAll(".produto");
+    produtosVendas.forEach(function(nome) {
+    conteudo.insertAdjacentHTML("beforeend", `
+        <div class="produto">
+            <span class="nome-produto">${nome}</span>
 
-produtos.forEach(function(produto) {
+            <div class="controle">
+                <button type="button" class="menos">-</button>
+                <span class="quantidade">0</span>
+                <button type="button" class="mais">+</button>
+            </div>
+        </div>
+    `);
+    });
+    const produtos = conteudo.querySelectorAll(".produto");
+
+    produtos.forEach(function(produto) {
 
     const menos = produto.querySelector(".menos");
     const mais = produto.querySelector(".mais");
     const quantidade = produto.querySelector(".quantidade");
 
-    let valor = 0;
+    let valor = quantidades[produto.querySelector(".nome-produto").textContent] || 0;quantidade.textContent = valor;
 
     mais.addEventListener("click", function() {
         valor++;
         quantidade.textContent = valor;
+
+        const nome = produto.querySelector(".nome-produto").textContent;    
+        quantidades[nome] = valor;
     });
 
     menos.addEventListener("click", function() {
         if (valor > 0) {
             valor--;
             quantidade.textContent = valor;
+
+            const nome = produto.querySelector(".nome-produto").textContent;
+            quantidades[nome] = valor;
         }
     });
-
-});
-
-
-produtosVendas.forEach(function(nome) {
-    conteudo.insertAdjacentHTML("beforeend",
-        `
-        <div class="produto">
-            <span class="nome-produto">${nome}</span>
-
-            <div class="controle">
-                <button type="button" class="menos">−</button>
-                <span class="quantidade">0</span>
-                <button type="button" class="mais">+</button>
-            </div>
-        </div>
-        `
-        );
     });
 });
+
+
+
 
 
 
@@ -94,7 +99,7 @@ conteudo.innerHTML = `
     <h2>Produtos para Fabricação</h2>
 
     <div class="produto">
-        <span>Farinha</span>
+        <span class="nome-produto">Farinha</span>
 
         <div class="controle">
             <button type="button" class="menos">-</button>
@@ -104,7 +109,7 @@ conteudo.innerHTML = `
     </div>
 
     <div class="produto">
-        <span>Açúcar</span>
+        <span class="nome-produto">Açúcar</span>
 
         <div class="controle">
             <button type="button" class="menos">-</button>
@@ -114,7 +119,7 @@ conteudo.innerHTML = `
     </div>
 
     <div class="produto">
-        <span>Fermento</span>
+        <span class="nome-produto">Fermento</span>
 
         <div class="controle">
             <button type="button" class="menos">-</button>
@@ -125,6 +130,20 @@ conteudo.innerHTML = `
         
     </div>
      `;
+   produtosFabricacao.forEach(function(nome) {
+        conteudo.insertAdjacentHTML("beforeend", `
+            <div class="produto">
+                <span class="nome-produto">${nome}</span>
+
+                <div class="controle">
+                    <button type="button" class="menos">-</button>
+                    <span class="quantidade">0</span>
+                    <button type="button" class="mais">+</button>
+                </div>
+            </div>
+        `);
+    });
+
     const produtos = conteudo.querySelectorAll(".produto");
 
 produtos.forEach(function(produto) {
@@ -133,42 +152,41 @@ produtos.forEach(function(produto) {
     const mais = produto.querySelector(".mais");
     const quantidade = produto.querySelector(".quantidade");
 
-    let valor = 0;
+    let valor = quantidades[produto.querySelector(".nome-produto").textContent] || 0;
+    quantidade.textContent = valor;
 
     mais.addEventListener("click", function() {
         valor++;
         quantidade.textContent = valor;
+
+        const nome = produto.querySelector(".nome-produto").textContent;
+        quantidades[nome] = valor;
+
     });
+    
+    
 
     menos.addEventListener("click", function() {
         if (valor > 0) {
             valor--;
             quantidade.textContent = valor;
+
+             const nome = produto.querySelector(".nome-produto").textContent;
+            quantidades[nome] = valor;
         }
     });
-
-});
-
-produtosFabricacao.forEach(function(nome) {
-
-        conteudo.insertAdjacentHTML("beforeend",
-            `
-            <div class="produto">
-                <span class="nome-produto">${nome}</span>
-
-                <div class="controle">
-                    <button type="button" class="menos">-</button>
-
-                    <span class="quantidade">0</span>
-
-                    <button type="button" class="mais">+</button>
-                </div>
-            </div>
-            `
-        );
-
     });
-});
+
+
+
+
+            
+    
+
+   
+    });
+    
+
 
 
     
@@ -209,41 +227,6 @@ adicionarProduto.addEventListener("click", function() {
     }
    
 
-    conteudo.insertAdjacentHTML("beforeend",
-        `
-        <div class="produto">
-            <span class="nome-produto">${nome}</span>
-
-            <div class="controle">
-                <button type="button" class="menos">−</button>
-                <span class="quantidade">0</span>
-                <button type="button" class="mais">+</button>
-            </div>
-        </div>
-        `
-    );
-
-
     nomeProduto.value = "";
-
-const novoProduto = conteudo.lastElementChild;
-
-const menos = novoProduto.querySelector(".menos");
-const mais = novoProduto.querySelector(".mais");
-const quantidade = novoProduto.querySelector(".quantidade");
-
-let valor = 0;
-
-mais.addEventListener("click", function() {
-    valor++;
-    quantidade.textContent = valor;
-});
-
-menos.addEventListener("click", function() {
-    if (valor > 0) {
-        valor--;
-        quantidade.textContent = valor;
-    }
-});
-});
-        
+    });
+    
