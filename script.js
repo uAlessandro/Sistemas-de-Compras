@@ -197,6 +197,12 @@ fabricacao.addEventListener("click", function() {
     const categoriaProduto = document.getElementById("categoriaProduto");
     const adicionarProduto = document.getElementById("adicionarProduto");
     const gerarLista = document.getElementById("gerarLista");
+    const copiarLista = document.getElementById("copiarLista");
+    copiarLista.addEventListener("click", function() {
+    const lista = document.getElementById("listaFinal").innerText;
+
+    navigator.clipboard.writeText(lista);
+});
 
     let produtosVendas = [];
     let produtosFabricacao = [];
