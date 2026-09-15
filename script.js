@@ -94,7 +94,7 @@ conteudo.innerHTML=
 
 
 fabricacao.addEventListener("click", function() {
-conteudo.innerHTML = `
+    conteudo.innerHTML = `
     
     <h2>Produtos para Fabricação</h2>
 
@@ -146,7 +146,7 @@ conteudo.innerHTML = `
 
     const produtos = conteudo.querySelectorAll(".produto");
 
-produtos.forEach(function(produto) {
+    produtos.forEach(function(produto) {
 
     const menos = produto.querySelector(".menos");
     const mais = produto.querySelector(".mais");
@@ -193,13 +193,18 @@ produtos.forEach(function(produto) {
 
 
 
-const nomeProduto = document.getElementById("nomeProduto");
-const categoriaProduto = document.getElementById("categoriaProduto");
-const adicionarProduto = document.getElementById("adicionarProduto");
-let produtosVendas = [];
-let produtosFabricacao = [];
+    const nomeProduto = document.getElementById("nomeProduto");
+    const categoriaProduto = document.getElementById("categoriaProduto");
+    const adicionarProduto = document.getElementById("adicionarProduto");
+    const gerarLista = document.getElementById("gerarLista");
 
-adicionarProduto.addEventListener("click", function() {
+    let produtosVendas = [];
+    let produtosFabricacao = [];
+
+    const produtosFixosVendas = ["Arroz", "Refrigerante", "Biscoito"];
+    const produtosFixosFabricacao = ["Farinha", "Açúcar", "Fermento"];
+
+    adicionarProduto.addEventListener("click", function() {
 
     const nome = nomeProduto.value.trim();
     const categoria = categoriaProduto.value;
@@ -230,3 +235,46 @@ adicionarProduto.addEventListener("click", function() {
     nomeProduto.value = "";
     });
     
+    gerarLista.addEventListener("click", function() {
+    const listaFinal = document.getElementById("listaFinal");
+
+    listaFinal.innerHTML = `
+        <h2>Lista de Compras</h2>
+
+        <h3>Produtos para Venda</h3>
+    `;
+
+    produtosFixosVendas.forEach(function(nome)  {
+        if (quantidades[nome] > 0) {
+            listaFinal.innerHTML += `
+                <p>${nome} - ${quantidades[nome]} unidades</p>
+            `;
+        }
+    });
+    produtosVendas.forEach(function(nome) {
+    if (quantidades[nome] > 0) {
+        listaFinal.innerHTML += `
+            <p>${nome} - ${quantidades[nome]} unidades</p>
+        `;
+    }
+    });
+
+    listaFinal.innerHTML += `
+        <h3>Produtos para Fabricação</h3>
+    `;
+
+    produtosFixosFabricacao.forEach(function(nome) {
+        if (quantidades[nome] > 0) {
+            listaFinal.innerHTML += `
+                <p>${nome} - ${quantidades[nome]} unidades</p>
+            `;
+        }
+    });
+    produtosFabricacao.forEach(function(nome) {
+    if (quantidades[nome] > 0) {
+        listaFinal.innerHTML += `
+            <p>${nome} - ${quantidades[nome]} unidades</p>
+        `;
+    }
+    });
+    });
