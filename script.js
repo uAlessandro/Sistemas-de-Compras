@@ -245,41 +245,41 @@ fabricacao.addEventListener("click", function() {
     const listaFinal = document.getElementById("listaFinal");
 
     listaFinal.innerHTML = `
-        <h2>Lista de Compras</h2>
+        <h2>🛒 LISTA DE COMPRAS</h2>
 
-        <h3>Produtos para Venda</h3>
+        <h3>📦 PARA VENDA</h3>
     `;
 
     produtosFixosVendas.forEach(function(nome)  {
         if (quantidades[nome] > 0) {
             listaFinal.innerHTML += `
-                <p>${nome} - ${quantidades[nome]} unidades</p>
+                <p>• ${nome} - ${quantidades[nome]} unidades</p>
             `;
         }
     });
     produtosVendas.forEach(function(nome) {
     if (quantidades[nome] > 0) {
         listaFinal.innerHTML += `
-            <p>${nome} - ${quantidades[nome]} unidades</p>
+            <p>• ${nome} - ${quantidades[nome]} unidades</p>
         `;
     }
     });
 
     listaFinal.innerHTML += `
-        <h3>Produtos para Fabricação</h3>
+        <h3>🏭 PARA FABRICAÇÃO</h3>
     `;
 
     produtosFixosFabricacao.forEach(function(nome) {
         if (quantidades[nome] > 0) {
             listaFinal.innerHTML += `
-                <p>${nome} - ${quantidades[nome]} unidades</p>
+                <p>• ${nome} - ${quantidades[nome]} unidades</p>
             `;
         }
     });
     produtosFabricacao.forEach(function(nome) {
     if (quantidades[nome] > 0) {
         listaFinal.innerHTML += `
-            <p>${nome} - ${quantidades[nome]} unidades</p>
+            <p>• ${nome} - ${quantidades[nome]} unidades</p>
         `;
     }
     });
