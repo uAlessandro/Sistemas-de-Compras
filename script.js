@@ -224,12 +224,17 @@ fabricacao.addEventListener("click", function() {
         alert("Esse produto já está cadastrado.");
         return;
     }
+        if (produtosFixosVendas.includes(nome)) {
+        alert("Esse produto já existe.");
+        return;
+    }
+    
         
     produtosVendas.push(nome);
     
     }else {
 
-        if (produtosFabricacao.includes(nome)) {
+        if (produtosFixosFabricacao.includes(nome)) {
             alert("Esse produto já está cadastrado.");
             return;
         }
