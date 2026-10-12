@@ -217,11 +217,31 @@ fabricacao.addEventListener("click", function() {
     
     const nomeFormatado = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
     const nomeBusca = nome.toLowerCase();
+   
+    
+    const existeEmVendas =
+    produtosFixosVendas.some(produto => produto.toLowerCase() === nomeBusca) ||
+    produtosVendas.some(produto => produto.toLowerCase() === nomeBusca);
+
+const existeEmFabricacao =
+    produtosFixosFabricacao.some(produto => produto.toLowerCase() === nomeBusca) ||
+    produtosFabricacao.some(produto => produto.toLowerCase() === nomeBusca);
+
 
     if (nome === "") {
         alert("Digite o nome do produto.");
         return;
     }
+    
+    if (existeEmVendas) {
+    alert("Esse produto já está cadastrado em [ Vendas ].");
+    return;
+}
+
+if (existeEmFabricacao) {
+    alert("Esse produto já está cadastrado [ Fabricação ] .");
+    return;
+}
     if (categoria === "vendas") {
         if (produtosVendas.some(function(produto) {
     return produto.toLowerCase() === nomeBusca; 
@@ -234,7 +254,7 @@ fabricacao.addEventListener("click", function() {
         
     
     if (produtosFixosVendas.some(function(produto) {
-    return produto.toLowerCase() === nome.toLowerCase();
+    return produto.toLowerCase() === nomeBusca;
     }))
      {
     alert("Esse produto já está cadastrado.");
@@ -246,13 +266,7 @@ fabricacao.addEventListener("click", function() {
         alert("Esse produto já existe em Fabricação.");
         return;
     }
-    if (produtosFixosFabricacao.some(function(produto) {
-    return produto.toLowerCase() === nome.toLowerCase();
-    })) 
-    {
-            alert("Esse produto já foi cadastrado.");
-            return;
-        }
+    
         
     produtosVendas.push(nomeFormatado);
     
@@ -264,13 +278,9 @@ fabricacao.addEventListener("click", function() {
             alert("Esse produto já está cadastrado.");
             return;
         }
-       
-         if (produtosFixosFabricacao.includes(nome)) {
-        alert("Esse produto já foi cadastrado.");
-        return;
-        }
+    
         if (produtosFixosVendas.some(function(produto) {
-        return produto.toLowerCase() === nome.toLowerCase();
+        return produto.toLowerCase() === nomeBusca;
         })) {
         alert("Esse produto já existe em Vendas.");
         return;
@@ -296,14 +306,14 @@ fabricacao.addEventListener("click", function() {
     produtosFixosVendas.forEach(function(nome)  {
         if (quantidades[nome] > 0) {
             listaFinal.innerHTML += `
-                <p>• ${nome} - ${quantidades[nome]} unidades</p>
+                <p>• ${nome} - ${quantidades[nome]} qtde</p>
             `;
         }
     });
     produtosVendas.forEach(function(nome) {
     if (quantidades[nome] > 0) {
         listaFinal.innerHTML += `
-            <p>• ${nome} - ${quantidades[nome]} unidades</p>
+            <p>• ${nome} - ${quantidades[nome]} qtde</p>
         `;
     }
     });
@@ -315,14 +325,14 @@ fabricacao.addEventListener("click", function() {
     produtosFixosFabricacao.forEach(function(nome) {
         if (quantidades[nome] > 0) {
             listaFinal.innerHTML += `
-                <p>• ${nome} - ${quantidades[nome]} unidades</p>
+                <p>• ${nome} - ${quantidades[nome]} qtde</p>
             `;
         }
     });
     produtosFabricacao.forEach(function(nome) {
     if (quantidades[nome] > 0) {
         listaFinal.innerHTML += `
-            <p>• ${nome} - ${quantidades[nome]} unidades</p>
+            <p>• ${nome} - ${quantidades[nome]} qtde</p>
         `;
     }
     });

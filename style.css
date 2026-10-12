@@ -42,7 +42,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: 2px solid #ddd;
     min-height: 65px;
     padding: 10px 15px;
@@ -84,6 +84,19 @@ button {
     font-size: 20px;
     justify-content: space-between;
 }
+.nome-produto {
+    min-width: 0;
+    overflow-wrap: break-word;
+    flex: 1;
+    margin-right: 10px;
+}
+
+#vendas{
+    background-color: rgba(13, 245, 25, 0.219);
+}
+#fabricacao{
+    background-color: rgba(0, 110, 255, 0.274);
+}
 .controle {
     display: flex;
     align-items: center;
@@ -107,7 +120,7 @@ button {
 }
 #cadastro {
     width: 100%;
-    background-color: white;
+    background-color: #fffaeea6;
     border: 2px solid #ddd;
     border-radius: 10px;
     padding: 20px 15px;
