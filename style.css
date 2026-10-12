@@ -6,8 +6,9 @@
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f2f2f2;;
+    background-color: #F3F6FB;
     min-height:100dvh;
+    color: #1E293B;
 }
 main{
 
@@ -43,7 +44,7 @@ button {
     justify-content: center;
     gap: 15px;
     background-color: rgb(255, 255, 255);
-    border: 2px solid #ddd;
+    border: 2px solid #DCE4F0;
     min-height: 65px;
     padding: 10px 15px;
 }
@@ -74,8 +75,8 @@ button {
     display: flex;
     align-items: center;
 
-    background-color: white;
-    border: 2px solid #ddd;
+    background-color: #FFFFFF;
+    border: 2px solid #DCE4F0;
     border-radius: 10px;
 
     padding: 10px 15px;
@@ -95,12 +96,13 @@ button {
     background-color: rgba(13, 245, 25, 0.219);
 }
 #fabricacao{
-    background-color: rgba(0, 110, 255, 0.274);
+    background-color: #DCE8FA;
 }
 .controle {
     display: flex;
     align-items: center;
     gap: 5px;
+    border: 1px solid #DCE4F0;
    
     
 }
@@ -120,8 +122,8 @@ button {
 }
 #cadastro {
     width: 100%;
-    background-color: #fffaeea6;
-    border: 2px solid #ddd;
+    background-color: #FFFFFF;
+    border: 2px solid #DCE4F0;
     border-radius: 10px;
     padding: 20px 15px;
 
@@ -141,7 +143,7 @@ button {
     width: 100%;
     min-height: 50px;
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 2px solid #DCE4F0;
     border-radius: 8px;
 
     font-size: 17px;
@@ -150,11 +152,13 @@ button {
 
 #adicionarProduto {
     min-height: 50px;
+    background-color: #2457A7;
+    color: #FFFFFF;
 }
 #listaFinal {
     width: 100%;
     background-color: white;
-    border: 2px solid #ddd;
+    border: 2px solid #DCE4F0;
     border-radius: 10px;
     padding: 20px 15px;
 }
@@ -177,14 +181,147 @@ button {
 #gerarLista {
     min-height: 55px;
     padding: 10px 15.5px;
-    background-color: #222;
-    color: white;
+    background-color: #2457A7;
+    color: #FFFFFF;
     border-radius: 10px;
 }
 #copiarLista {
     min-height: 55px;
     padding: 10px 15px;
     background-color: white;
-    border: 2px solid #ddd;
+    border: 2px solid #2457A7;
     border-radius: 10px;
+    color: #1E293B;
+}
+button {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(0.93);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+#cadastro input:focus,
+#cadastro select:focus {
+    outline: none;
+    border-color: #2457A7;
+    box-shadow: 0 0 0 3px rgba(36, 87, 167, 0.15);
+}
+
+.categoria {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.categoria:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(30, 41, 59, 0.08);
+}
+
+.produto {
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+}
+
+.produto:hover {
+    box-shadow: 0 3px 8px rgba(30, 41, 59, 0.07);
+}
+
+#cadastro input,
+#cadastro select {
+    border-radius: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+h1 {
+    color: #2457A7;
+    letter-spacing: 0.3px;
+}
+
+#conteudo h2,
+#cadastro h2,
+#listaFinal h2 {
+    color: #1E293B;
+}
+
+.controle button {
+    background-color: #EAF0FA;
+    color: #2457A7;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.controle button:hover {
+    background-color: #DCE8FA;
+}
+
+#copiarLista {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#copiarLista:hover {
+    background-color: #EAF0FA;
+    color: #2457A7;
+}
+
+#listaFinal h3 {
+    color: #2457A7;
+}
+
+#listaFinal p {
+    color: #1E293B;
+    line-height: 1.5;
+}
+
+#adicionarProduto,
+#gerarLista {
+    border-radius: 10px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#cadastro input::placeholder {
+    color: #94A3B8;
+}
+
+#cadastro input:focus::placeholder {
+    color: #64748B;
+}
+
+#listaFinal {
+    line-height: 1.5;
+}
+
+#listaFinal h3 {
+    padding-bottom: 6px;
+    border-bottom: 1px solid #DCE4F0;
+}
+
+#cadastro {
+    box-shadow: 0 3px 10px rgba(30, 41, 59, 0.04);
+}
+
+button:focus-visible,
+#cadastro input:focus-visible,
+#cadastro select:focus-visible {
+    outline: 3px solid #2457A7;
+    outline-offset: 2px;
+}
+
+@media (max-width: 400px) {
+    main {
+        padding: 15px 10px;
+    }
+
+    .produto {
+        padding: 8px 10px;
+        font-size: 18px;
+    }
+
+    .controle button {
+        width: 42px;
+        min-height: 42px;
+        font-size: 22px;
+    }
 }
